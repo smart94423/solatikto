@@ -14,3 +14,34 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.app{
+  height: 100vh;
+  background: #2c2d30;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginContainer{
+  background-color: white;
+  width: 350px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 15px;
+
+}
+
+.loginTitle {
+ font-size: 1.5rem;
+ font-weight: bold; 
+ text-align: center; 
+}
+
+.loginSubTitle {
+  font-size: 1 rem;
+  color: #959595;
+  text-align: center;
+  margin-top: -80px ;
+}
