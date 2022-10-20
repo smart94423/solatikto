@@ -2,9 +2,13 @@ import React from 'react'
 
 const MainView = () => {
   return (
-    <div>
-        <h1>Welcome to Tiktok</h1>
-    </div>
+    <>
+        {isAccount ? (
+          <div>
+            Tiktoks will go here
+          </div>
+        )}
+    </>
   )
 }
 
