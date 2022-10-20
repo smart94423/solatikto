@@ -6,7 +6,7 @@ const Signup = () => {
     <div className={styles.authContainer}>
       <h1 className={styles.title}>Sign up to use Tiktok</h1>
       <div className={styles.signupForm}>
-        <div className={styles.inputFiled}>
+        <div className={styles.inputField}>
           <div className={styles.inputTitle}>Username</div>
           <div className={styles.inputContainer}>
             <input
@@ -16,7 +16,7 @@ const Signup = () => {
             />
           </div>
         </div>
-        <div className={styles.inputfiled}>
+        <div className={styles.inputField}>
           <div className={styles.inputTitle}>
             Profile Image:
           </div>
