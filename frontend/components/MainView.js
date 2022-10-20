@@ -1,4 +1,7 @@
 import React from 'react'
+import Signup from './Signup'
+
+let isAccount = false
 
 const MainView = () => {
   return (
@@ -7,9 +10,11 @@ const MainView = () => {
           <div>
             Tiktoks will go here
           </div>
+        ):(
+          <Signup/>
         )}
     </>
   )
-}
+} 
 
 export default MainView
