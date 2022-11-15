@@ -34,7 +34,7 @@ const Signup = ({ signup }) => {
               type="text"
               onChange = {e => setProfile(e.target.value)}
             />
-          </div>ZyspaiA1JU|^$NSt+2&[7~xh
+          </div>
         </div>
       </div>
       <div className={styles.loginButton} onClick={signUpClicked}>
