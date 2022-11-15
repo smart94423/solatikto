@@ -5,10 +5,10 @@ import {
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { useMemo } from "react";
-import { clusterApiUrl } from "@solana/web3.js";
+import { SOLANA_HOST } from "../utils/const";
 
 const WalletConnectionProvider = ({ children }) => {
-  const endpoint = useMemo(() => clusterApiUrl("devnet"), []);
+  const endpoint = useMemo(() => SOLANA_HOST, []);
 
   const wallets = useMemo(() => [new PhantomWalletAdapter()], []);
 
