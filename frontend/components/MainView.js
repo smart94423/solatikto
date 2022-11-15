@@ -8,6 +8,7 @@ import { getProgramInstance } from "../utils/utils";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 
 import useAccount from "../hooks/useAccount";
+import useTiktok from "../hooks/useTiktok";
 
 const anchor = require("@project-serum/anchor")
 const utf8 = anchor.utils.bytes.utf8
@@ -27,22 +28,63 @@ const MainView = () => {
   const wallet = useWallet();
   const connection = new anchor.web3.Connection(SOLANA_HOST);
   const program = getProgramInstance(connection, wallet);
-  
+
+  const [tiktoks, setTiktoks] = useState();
+  const [newVideoShow, setNewVideoShow] = useState(false);
+  const [description, setDescription] = useState('');
+  const [videoUrl, setVideoUrl] = useState('h');
+  const [userDetail, SetUserDetail] = useState();
+
   const { signup } = useAccount()
+  const { getTiktoks, likeVideo, createComment, newVideo,getComments } = useTiktok(
+    setTiktoks,
+    userDetail,
+    videoUrl,
+    description,
+    setDescription,
+    setVideoUrl,
+    setNewVideoShow,
+
+
+  )
+
+  useEffect(() => {
+    if (wallet.connected) {
+      checkAccount()
+      getTiktoks()
+    }
+  }, [wallet.connected])
+
+  const checkAccount = async () => {
+    let [user_pda] = await anchor.web3.PublicKey.findProgramAddress(
+      [utf8.encode("user"), wallet.publicKey.toBuffer()],
+      program.programId,
+    )
+    try {
+      const userInfo = await program.account.userAccount.fetch(user_pda);
+      console.log(userInfo);
+      setUserDetail(userInfo);
+      setAccount(true)
+
+    } catch (e) {
+      setAccount(false)
+    }
+
+  }
 
 
   return (
     <>
       {isAccount ? (
-         <div>
+        <div>
           Tiktoks will go here
 
-         </div> 
-  ) 
-  :(
-     <Signup signup = {signup} wallet={wallet.publicKey.toBase58()}/> //pass props to children
-  )}
-  </>
+        </div>
+      )
+        : (
+          <Signup signup={signup} wallet={wallet.publicKey.toBase58()} /> //pass props to children
+        )}
+    </>
   )
 };
 

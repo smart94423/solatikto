@@ -26,10 +26,11 @@ const useTiktok = (
   const wallet = useWallet();
   const connection = new anchor.web3.Connection(SOLANA_HOST);
   const program = getProgramInstance(connection, wallet);
+
   const getTiktoks = async () => {
     console.log("fetching tiktok");
 
-    const videos = await program.account.videoAccount.all();
+    const videos = await program.account.videoAccount.all()
     console.log(videos);
 
     // save all videos in state for front end
@@ -40,12 +41,12 @@ const useTiktok = (
   //function to call createComment from smart contract
   const createComment = async (address, count, comment) => {};
   //function to call createVideo from smart contract
-  const newVideo = async (address, count) => {
+  const newVideo = async () => {
     const randomkey = anchor.web3.Keypair.generate().publicKey;
     let [video_pda] = await anchor.web3.PublicKey.findProgramAddress(
       [utf8.encode("video"), randomKey.toBuffer()],
       program.programId
-    );
+    )
 
     const tx = await program.rpc.createVideo(
       description,
@@ -58,12 +59,12 @@ const useTiktok = (
           randomkey: randomkey,
           authority: wallet.publicKey,
           ...defaultAccounts,
-        },
+        }
       }
-    );
+    )
     console.log(tx);
-    setDescription("");
-    setVideoUrl("");
+    setDescription('');
+    setVideoUrl('');
     setNewVideoShow(false);
   };
   //function to fetch comments from  the commentAccount on the smart contract
