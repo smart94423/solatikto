@@ -1,6 +1,9 @@
 import React from 'react'
 import { useRef, useState } from 'react'
 import styles from '../styles/Video.module.css'
+import Comments from './Comments'
+import Sidebar from './Sidebar'
+import Footer from './Footer'
 
 const Video = (
     {
@@ -48,11 +51,31 @@ const Video = (
             src={url}
             style={{objectFit:'cover'}}
             />
-            {/* <Footer/> */}
-            {/* <Sidebar/> */}
+            <Footer
+            channel={channel}
+            description={description}
+            song={index}
+            />
+            <Sidebar
+            address = {address}
+            likes={likes}
+            shares={shares}
+            onShowComments={showComments}
+            likeVideo={likeVideo}
+            index={index}
+            likesAddress={likesAddress}
+            messages={commentCount}
 
+            /> 
             {showCommentsModal && (
-                <Comments/>
+                <Comments
+                onHide={hideComments}
+                index={index}
+                address={address}
+                createComment={createComment}
+                getComments={getComments}
+                commentCount={commentCount} 
+                />
             )}
 
         </div>
