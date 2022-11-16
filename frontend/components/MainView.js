@@ -81,7 +81,22 @@ const MainView = () => {
             {tiktoks.length === 0 ? (
               <h1> No videos </h1>
             ) : (
-              titktoks.map((tiktok, id) => <Video />)
+              tiktoks.map((tiktok, id) => (
+                <Video
+                  key={id}
+                  address={tiktok.publicKey.toBase58()}
+                  url={tiktok.account.videoUrl}
+                  channel={tiktok.account.creatorName}
+                  index={tiktok.account.index.toNumber()}
+                  likes={tiktok.account.likes}
+                  description={tiktok.account.description}
+                  likeVideo={likeVideo}
+                  likesAddress={tiktok.account.peopleWhoLiked}
+                  createComment={createComment}
+                  getComments={getComments}
+                  commentCount={tiktok.account.commentCount.toNumber()}
+                />
+              ))
             )}
           </div>
 
