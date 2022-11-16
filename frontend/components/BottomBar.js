@@ -1,7 +1,26 @@
-import React from 'react'
+import React from "react";
+import { AiFillHome, AiOutlineCompass } from "react-icons/ai";
+import { IoIosAdd } from "react-icons/io";
+import { BiMessageMinus } from "react-icons/bi";
+import { BsPerson } from "react-icons/bs";
+import styles from "../styles/BottomBar.module.css";
 
-export const BottomBar = () => {
+const BottomBar = ({ setNewVideoShow, getTiktoks }) => {
   return (
-    <div>BottomBar</div>
-  )
-}
+    <div className={styles.wrapper}>
+      <AiFillHome className={styles.bottomIcon} />
+      <AiOutlineCompass className={styles.bottomIcon} onClick={getTiktoks} />
+      <div className={styles.addVideoButton}>
+        <IoIosAdd
+          className={styles.addVideoButton}
+          onClick={() => setNewVideoShow(true)}
+          style={{ color: "black" }}
+        />
+      </div>
+      <BiMessageMinus className={styles.bottom} />
+      <BsPerson className={styles.bottomIcon} />
+    </div>
+  );
+};
+
+export default BottomBar;

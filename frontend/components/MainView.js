@@ -1,7 +1,7 @@
 import React from "react";
 import UploadModal from "./UploadModal";
 import Video from "./Video";
-import { BottomBar } from "./BottomBar";
+import BottomBar  from "./BottomBar";
 import styles from "../styles/MainView.module.css";
 import Signup from "./Signup";
 import { useEffect, useState } from "react";
@@ -109,7 +109,10 @@ const MainView = () => {
             )}
           </div>
 
-          <BottomBar />
+          <BottomBar
+          setNewVideoShow= {setNewVideoShow}
+          getTiktoks = {getTiktoks}
+          />
         </div>
       ) : (
         <Signup signup={signup} wallet={wallet.publicKey.toBase58()} /> //pass props to children
