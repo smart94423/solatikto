@@ -27,7 +27,7 @@ const UploadModal = ({
         <div className="styles.inputTitle">Video Url</div>
         <div className={styles.inputContainer}>
           <input
-            className={styles.inputContainer}
+            className={styles.input}
             type="text"
             value={videoUrl}
             onChange={(e) => setVideoUrl(e.value)}

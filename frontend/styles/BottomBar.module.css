@@ -1,5 +1,5 @@
 .wrapper{
-    background-color: red;
+    background-color: black;
     width:72.6%;
     display: flex;
     justify-content: space-evenly;
@@ -9,6 +9,7 @@
     border-top:2px solid white;
     border-radius: 0  0 20px 20px;
     gap:40px;
+    margin-left:47px
 
 }
 .addVideoButton{
@@ -21,5 +22,6 @@
     border-radius:0.4rem;
 }
 .bottomIcon{
+
     
 }
