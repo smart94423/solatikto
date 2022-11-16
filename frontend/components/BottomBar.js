@@ -23,4 +23,4 @@ const BottomBar = ({ setNewVideoShow, getTiktoks }) => {
   );
 };
 
-export default BottomBar;
+export default BottomBar

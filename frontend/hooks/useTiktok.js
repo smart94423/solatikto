@@ -5,7 +5,7 @@ import { SOLANA_HOST } from "../utils/const";
 import { getProgramInstance } from "../utils/utils";
 
 const anchor = require("@project-serum/anchor");
-const utf8 = anchor.utils.Utf8;
+const utf8 = anchor.utils.bytes.utf8;
 const { BN, web3 } = anchor;
 const { SystemProgram } = web3;
 
@@ -19,6 +19,7 @@ const useTiktok = (
   setTiktoks,
   userDetail,
   videoUrl,
+  description,
   setDescription,
   setVideoUrl,
   setNewVideoShow
@@ -30,23 +31,23 @@ const useTiktok = (
   const getTiktoks = async () => {
     console.log("fetching tiktok");
 
-    const videos = await program.account.videoAccount.all()
+    const videos = await program.account.videoAccount.all();
     console.log(videos);
 
     // save all videos in state for front end
     setTiktoks(videos);
   };
-  //function to call likeVideo from smart contract
+  //function to call likeVideo from smartcontract
   const likeVideo = async (address) => {};
-  //function to call createComment from smart contract
+  //function to call createComment from smartcontract
   const createComment = async (address, count, comment) => {};
-  //function to call createVideo from smart contract
+  //function to call createVideo from smartcontract
   const newVideo = async () => {
-    const randomkey = anchor.web3.Keypair.generate().publicKey;
+    const randomKey = anchor.web3.Keypair.generate().publicKey
     let [video_pda] = await anchor.web3.PublicKey.findProgramAddress(
       [utf8.encode("video"), randomKey.toBuffer()],
       program.programId
-    )
+    );
 
     const tx = await program.rpc.createVideo(
       description,
@@ -56,20 +57,20 @@ const useTiktok = (
       {
         accounts: {
           video: video_pda,
-          randomkey: randomkey,
+          randomkey: randomKey,
           authority: wallet.publicKey,
           ...defaultAccounts,
-        }
+        },
       }
-    )
+    );
     console.log(tx);
-    setDescription('');
-    setVideoUrl('');
+    setDescription("");
+    setVideoUrl("");
     setNewVideoShow(false);
   };
   //function to fetch comments from  the commentAccount on the smart contract
   const getComments = async (address, count) => {};
   return { getTiktoks, likeVideo, createComment, newVideo, getComments };
-}
+};
 
 export default useTiktok;
