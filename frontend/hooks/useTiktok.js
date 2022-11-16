@@ -38,7 +38,22 @@ const useTiktok = (
     setTiktoks(videos);
   };
   //function to call likeVideo from smartcontract
-  const likeVideo = async (address) => {};
+  const likeVideo = async index => {
+    let [video_pda] = await anchor.web3.PublicKey.findProgramAddress(
+      [utf8.encode('video'), new BN(index).toArrayLike(Buffer, 'be', 8)],
+      program.programId,
+    )
+
+    const tx = await program.rpc.likeVideo({
+      accounts: {
+        video: video_pda,
+        authority: wallet.publicKey,
+        ...defaultAccounts,
+      },
+    })
+
+    console.log(tx)
+  }
   //function to call createComment from smartcontract
   const createComment = async (address, count, comment) => {};
   //function to call createVideo from smartcontract
