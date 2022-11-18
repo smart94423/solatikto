@@ -15,7 +15,7 @@ function Footer({ channel, description, song }) {
       </div>
       <div className={style.footerRecord}>
         <Image
-          src={'https://static.thenounproject.com/png/934821-200.png'}
+          src='https://static.thenounproject.com/png/934821-200.png'
           alt='vinyl record'
           width={50}
           height={50}

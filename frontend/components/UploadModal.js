@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "../styles/UploadModal.module.css";
+
+import styles from "../styles/UploadModal.module.css"
 
 const UploadModal = ({
   description,
@@ -17,20 +17,20 @@ const UploadModal = ({
         <div className={styles.inputContainer}>
           <input
             className={styles.input}
-            type="text"
+            type='text'
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={e => setDescription(e.target.value)}
           />
         </div>
       </div>
       <div className={styles.inputField}>
-        <div className="styles.inputTitle">Video Url</div>
+        <div className={styles.inputTitle}>Video Url</div>
         <div className={styles.inputContainer}>
           <input
             className={styles.input}
-            type="text"
+            type='text'
             value={videoUrl}
-            onChange={(e) => setVideoUrl(e.value)}
+            onChange={e => setVideoUrl(e.target.value)}
           />
         </div>
       </div>
@@ -45,11 +45,11 @@ const UploadModal = ({
           onClick={newVideo}
           className={`${styles.button} ${styles.createButton}`}
         >
-          Create
+          Create New
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default UploadModal;
+export default UploadModal
